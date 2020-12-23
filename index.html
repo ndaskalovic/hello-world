@@ -18,7 +18,7 @@ function myFunction() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
 <script>
     function arrayToTable(tableData) {
-        document.getElementById("demo").innerHTML = "YOU CLICKED ME!"
+        
         var table = $('<table></table>');
         $(tableData).each(function (i, rowData) {
             var row = $('<tr></tr>');
@@ -26,6 +26,7 @@ function myFunction() {
                 row.append($('<td>'+cellData+'</td>'));
             });
             table.append(row);
+        document.getElementById("demo").innerHTML = "YOU CLICKED ME!"
         });
         return table;
     }
