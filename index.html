@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" type="image/png" href="/favicon.png"/>
 <title>Page Title</title>
 </head>
 <body>
@@ -9,6 +10,14 @@
 
 
 <h1>My First Heading</h1>
+<button id="demo" onclick="callajax()">Click me.</button>
+
+<script>
+    function myFunction() {
+      document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+    }
+</script>
+
 <script>
     function arrayToTable(tableData) {
         
@@ -19,21 +28,25 @@
                 row.append($('<td>'+cellData+'</td>'));
             });
             table.append(row);
-        document.getElementById("demo").innerHTML = "YOU CLICKED ME!"
         });
         return table;
     }
-
-    $.ajax({
+    function callajax(){
+        $.ajax({
         type: "GET",
-        url: "/Users/nicholas/Documents/Randomscripts/City scrape/New+york+city+restaurants.csv",
+        url: "http://localhost:8000/New+york+city+restaurants.csv",
         success: function (data) {
             $('body').append(arrayToTable(Papa.parse(data).data));
         }
     });
-</script>
 
-<button id="demo" onclick="arrayToTable()">Click me.</button>
+
+    }
+
+    
+</script>
+<p> poo</p>
+
 
 </body>
 </html>
