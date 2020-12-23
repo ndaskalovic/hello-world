@@ -1,18 +1,44 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>my-first-website</title>
-  <LINK href="styles.css" rel="stylesheet" type="text/css">
+<title>Page Title</title>
 </head>
-
 <body>
 
-<img src="https://octodex.github.com/images/daftpunktocat-thomas.gif" id="octocat" alt="octocat-gif" />
+<h1>My First Heading</h1>
+<button id="demo" onclick="arrayToTable()">Click me.</button>
 
-<!-- Change this code here by copy and pasting your template on line 15 -->
-<p>Welcome to your first GitHub Pages website!</p>
+<script>
+function myFunction() {
+  document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+}
+</script>
+<p>My first paragraph.</p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+<script>
+function arrayToTable(tableData) {
+        document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
+        var table = $('<table></table>');
+        $(tableData).each(function (i, rowData) {
+            var row = $('<tr></tr>');
+            $(rowData).each(function (j, cellData) {
+                row.append($('<td>'+cellData+'</td>'));
+            });
+            table.append(row);
+        });
+        return table;
+}
+
+$.ajax({
+        type: "GET",
+        url: "New+york+city+restaurants.csv",
+        success: function (data) {
+            $('body').append(arrayToTable(Papa.parse(data).data));
+            }
+    });
+</script>
 
 </body>
 </html>
+
