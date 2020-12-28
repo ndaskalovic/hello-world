@@ -10,6 +10,9 @@
 
 
 <h1>My First Heading</h1>
+<script src="https://gumroad.com/js/gumroad.js"></script>
+<a class="gumroad-button" href="https://gum.co/retroiconpack?wanted=true" target="_blank">Buy</a>
+
 <button id="demo" onclick="callajax()">Click me.</button>
 
 <script>
@@ -18,16 +21,27 @@
     }
 </script>
 
+
 <script>
     function arrayToTable(tableData) {
         
         var table = $('<table></table>');
+        var isGood = false;
         $(tableData).each(function (i, rowData) {
             var row = $('<tr></tr>');
             $(rowData).each(function (j, cellData) {
+                if (j == 3) {
+                    if (cellData == '4.7') {
+                        isGood = true;
+                    }
+                };
                 row.append($('<td>'+cellData+'</td>'));
             });
-            table.append(row);
+            if (isGood == true) {
+                table.append(row);
+                isGood = false;
+            };
+            
         });
         return table;
     }
@@ -46,6 +60,7 @@
     
 </script>
 <p> poo</p>
+
 
 
 </body>
